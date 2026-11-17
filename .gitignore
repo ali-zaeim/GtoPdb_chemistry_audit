@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+.DS_Store
+
+# marimo's working files; the session snapshot is tracked, as molab's static preview shows its outputs
+__marimo__/*
+!__marimo__/session/
+# coverage.py data
+.coverage
+coverage.json

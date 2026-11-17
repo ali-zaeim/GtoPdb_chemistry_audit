@@ -1,0 +1,6 @@
+/* marimo gives the content of a wrapped table cell a 200 px minimum width, so in a column given a narrower width
+   (column_widths, which marimo sets as the cell's max-width) the text wraps at 200 px and is cut off at the column
+   edge (https://github.com/marimo-team/marimo/issues/11492). Let it wrap within the column instead. */
+td[style*="max-width"] .min-w-\[200px\] {
+    min-width: 0 !important;
+}

@@ -1,0 +1,36 @@
+[project]
+name = "gtopdb-xref-audit"
+version = "0.1.0"
+description = "Audit of the ChEMBL, ChEBI and PubChem cross-references of IUPHAR/BPS Guide to PHARMACOLOGY ligands, and of their structures in UniChem"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "marimo>=0.25.2",
+    "pandas>=3.1.0",
+    "plotly>=7.1.0",
+    "pyarrow>=26.0.0",
+    "rdkit>=2026.9.1",
+    "requests>=2.34.2",
+    "urllib3>=2.8.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.17.3",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# the tests import the functions from the notebook, at the repository root
+pythonpath = ["."]
+
+[tool.ruff.lint.per-file-ignores]
+# marimo cells end with `return`, and display their last expression
+"gtp_chemistry_problem.py" = ["B018", "PLR1711"]
+
+[tool.coverage.run]
+# On Python 3.14+ coverage.py defaults to the sys.monitoring core, which ignores
+# dynamic contexts, so --cov-context=test would record no per-test data.
+core = "ctrace"
